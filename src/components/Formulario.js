@@ -1,6 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Formulario = () => {
+
+
+    // state del formulario
+    const [busqueda, guardarBusqueda] = useState({
+        ciudad: '',
+        pais: ''
+    })
+
+    // extraer ciudad y pais
+    const { ciudad, pais } = busqueda
+
+    // funcion que coloca los elementos en el state
+    const handleChange = e => {
+
+        // actualizar el state
+        guardarBusqueda({
+            ...busqueda,
+            [e.target.name] : e.target.value
+        })
+    }
+
     return ( 
         <form>
             <div className='input-field col s12'>
@@ -8,18 +29,29 @@ const Formulario = () => {
                     type='text'
                     name='ciudad'
                     id='ciudad'
+                    value={ciudad}
+                    onChange={handleChange}
                 />
-                <label htmlfor='ciudad'>Ciudad: </label>
+                <label htmlFor='ciudad'>Ciudad: </label>
             </div>
 
             <div className='input-field col s12'>
                 <select
                     name='pais'
                     id='pais'
+                    value={pais}
+                    onChange={handleChange}
                 >
                     <option value=''>-- Seleccione un Pais --</option>
+                    <option value="US">Estados Unidos</option>
+                    <option value="MX">México</option>
+                    <option value="AR">Argentina</option>
+                    <option value="CO">Colombia</option>
+                    <option value="CR">Costa Rica</option>
+                    <option value="ES">España</option>
+                    <option value="PE">Perú</option>
                 </select>
-                <label htmlfor='pais'>Pais: </label>
+                <label htmlFor='pais'>Pais: </label>
             </div>
         </form>
      );
