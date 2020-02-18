@@ -1,4 +1,4 @@
-# React BreakinBad
+# React Clima
 
 
 Este proyecto se inició con la aplicación Create React.
